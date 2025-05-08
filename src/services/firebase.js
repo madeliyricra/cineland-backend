@@ -6,14 +6,17 @@ const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY
 const FIREBASE_CLIENT_EMAIL = process.env.FIREBASE_CLIENT_EMAIL
 const FIREBASE_CLIENT_ID = process.env.FIREBASE_CLIENT_ID
 
+const credential = {
+    ...serviceAccount,
+    private_key_id: FIREBASE_PRIVATE_KEY_ID,
+    private_key: FIREBASE_PRIVATE_KEY,
+    client_email: FIREBASE_CLIENT_EMAIL,
+    client_id: FIREBASE_CLIENT_ID,
+}
+
+console.log('credential', credential)
 admin.initializeApp({
-    credential: admin.credential.cert({
-        ...serviceAccount,
-        private_key_id: FIREBASE_PRIVATE_KEY_ID,
-        private_key: FIREBASE_PRIVATE_KEY,
-        client_email: FIREBASE_CLIENT_EMAIL,
-        client_id: FIREBASE_CLIENT_ID,
-    }),
+    credential: admin.credential.cert(credential),
 })
 
 const getPremieresFromFirestore = async () => {
