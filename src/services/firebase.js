@@ -1,14 +1,18 @@
 const admin = require("firebase-admin");
+const serviceAccount = require("../config/firebase.json");
 
-console.log("Firebase key:", process.env.FIREBASE_KEY);
-console.log("Firebase private key:", process.env.FIREBASE_PRIVATE_KEY);
-const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
-const PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY
+const FIREBASE_PRIVATE_KEY_ID = process.env.FIREBASE_PRIVATE_KEY_ID
+const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY
+const FIREBASE_CLIENT_EMAIL = process.env.FIREBASE_CLIENT_EMAIL
+const FIREBASE_CLIENT_ID = process.env.FIREBASE_CLIENT_ID
 
 admin.initializeApp({
     credential: admin.credential.cert({
         ...serviceAccount,
-        private_key: PRIVATE_KEY
+        private_key_id: FIREBASE_PRIVATE_KEY_ID,
+        private_key: FIREBASE_PRIVATE_KEY,
+        client_email: FIREBASE_CLIENT_EMAIL,
+        client_id: FIREBASE_CLIENT_ID,
     }),
 })
 
