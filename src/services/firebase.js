@@ -14,7 +14,6 @@ const credential = {
     client_id: FIREBASE_CLIENT_ID,
 }
 
-console.log('credential', credential, FIREBASE_PRIVATE_KEY_ID)
 admin.initializeApp({
     credential: admin.credential.cert(credential),
 })

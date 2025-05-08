@@ -5,7 +5,7 @@ const routes = require("./src/routes/index");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+console.log('.env', process.env)
 const allowedOrigins = [
     'http://localhost:5173',
     'https://cineland-frontend.vercel.app'
