@@ -1,5 +1,7 @@
 const admin = require("firebase-admin");
 
+console.log("Firebase key:", process.env.FIREBASE_KEY);
+console.log("Firebase private key:", process.env.FIREBASE_PRIVATE_KEY);
 const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
 const PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY
 
