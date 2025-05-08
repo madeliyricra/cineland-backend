@@ -1,8 +1,13 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../config/firebase.json");
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
+const PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert({
+        ...serviceAccount,
+        private_key: PRIVATE_KEY
+    }),
 })
 
 const getPremieresFromFirestore = async () => {
